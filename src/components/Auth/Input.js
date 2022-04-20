@@ -1,8 +1,8 @@
 import React from 'react';
-import {Grid, IconButton, InputAdornment, TextField} from '@material-ui/core';
-import {Visibility, VisibilityOff} from '@material-ui/icons';
+import { Grid, IconButton, InputAdornment, TextField } from '@material-ui/core';
+import { Visibility, VisibilityOff } from '@material-ui/icons';
 
-const Input = ({half, name, label, type, handleChange, handleShowPassword}) => {
+const Input = ({ half, name, label, type, handleChange, handleShowPassword }) => {
 
   return (
     <Grid item xs={12} sm={half ? 6 : 12}>

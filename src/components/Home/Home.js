@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {Container, Grid, Grow} from '@material-ui/core';
+import React, { useState } from 'react';
+import { Container, Grid, Grow } from '@material-ui/core';
 import Posts from '../Posts/Posts';
 import Form from '../Form/Form';
 

@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
-import {Avatar, Button, Container, Grid, Paper, Typography} from '@material-ui/core';
+import React, { useState } from 'react';
+import { Avatar, Button, Container, Grid, Paper, Typography } from '@material-ui/core';
 import useStyles from './styles';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Input from './Input';
-import {useDispatch} from 'react-redux';
-import {useNavigate} from 'react-router';
-import {signIn, signUp} from '../../features/posts/authSlice';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
+import { signIn, signUp } from '../../features/posts/authSlice';
 
 const initialState = {
   firstName: '',
@@ -13,7 +13,7 @@ const initialState = {
   email: '',
   password: '',
   confirmPassword: '',
-}
+};
 
 const Auth = () => {
   const classes = useStyles();
@@ -26,14 +26,14 @@ const Auth = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    if(isSignUp) {
-      dispatch(signUp({formData, navigate}));
+    if (isSignUp) {
+      dispatch(signUp({ formData, navigate }));
     } else {
-      dispatch(signIn({formData, navigate}));
+      dispatch(signIn({ formData, navigate }));
     }
-  }
+  };
 
-  const handleChange = (e) => setFormData({...formData, [e.target.name]: e.target.value});
+  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleShowPassword = () => setShowPassword(prevState => !prevState);
 
@@ -54,8 +54,8 @@ const Auth = () => {
             <Grid container spacing={2}>
               {isSignUp && (
                 <>
-                  <Input name={'firstName'} label={'First Name'} handleChange={handleChange} half />
-                  <Input name={'lastName'} label={'Last Name'} handleChange={handleChange} half />
+                  <Input name={'firstName'} label={'First Name'} handleChange={handleChange} half/>
+                  <Input name={'lastName'} label={'Last Name'} handleChange={handleChange} half/>
                 </>
               )}
               <Input name={'email'} label={'Email Address'} type={'email'} handleChange={handleChange}/>
@@ -76,12 +76,12 @@ const Auth = () => {
               )}
             </Grid>
             <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
-              { isSignUp ? 'Sign Up' : 'Sign In' }
+              {isSignUp ? 'Sign Up' : 'Sign In'}
             </Button>
             <Grid container justifyContent={'flex-end'}>
               <Grid item>
                 <Button onClick={switchMode}>
-                  { isSignUp ? 'Already have an account? Sign in' : "Don't have an account? Sign Up" }
+                  {isSignUp ? 'Already have an account? Sign in' : 'Don\'t have an account? Sign Up'}
                 </Button>
               </Grid>
             </Grid>

@@ -1,15 +1,15 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import Post from './Post/Post';
 import useStyles from './styles';
-import {useDispatch, useSelector} from 'react-redux';
-import {fetchPosts} from '../../features/posts/postsSlice';
-import {CircularProgress, Grid} from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPosts } from '../../features/posts/postsSlice';
+import { CircularProgress, Grid } from '@material-ui/core';
 
-const Posts = ({setCurrentId}) => {
+const Posts = ({ setCurrentId }) => {
   const classes = useStyles();
 
   const dispatch = useDispatch();
-  const {posts, status, error} = useSelector(state => state.posts);
+  const { posts, status, error } = useSelector(state => state.posts);
 
   useEffect(() => {
     if (status === 'idle') {

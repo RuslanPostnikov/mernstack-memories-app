@@ -1,11 +1,11 @@
 import React from 'react';
-import {AppBar, Avatar, Button, Toolbar, Typography} from '@material-ui/core';
+import { AppBar, Avatar, Button, Toolbar, Typography } from '@material-ui/core';
 import memories from '../../images/memories.png';
 import useStyles from './styles';
-import {Link} from 'react-router-dom';
-import {useDispatch, useSelector} from 'react-redux';
-import {useNavigate} from 'react-router';
-import {logoutAction} from '../../features/posts/authSlice';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
+import { logoutAction } from '../../features/posts/authSlice';
 
 const Navbar = () => {
   const classes = useStyles();

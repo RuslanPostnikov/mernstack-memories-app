@@ -1,12 +1,12 @@
 import React from 'react';
-import {Card, CardContent, CardMedia, Button, Typography, CardActions} from '@material-ui/core';
+import { Card, CardContent, CardMedia, Button, Typography, CardActions } from '@material-ui/core';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
 import useStyles from './styles';
-import {useDispatch, useSelector} from 'react-redux';
-import {deletePost, likePost} from '../../../features/posts/postsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { deletePost, likePost } from '../../../features/posts/postsSlice';
 
 const Post = ({ post, setCurrentId }) => {
   const classes = useStyles();

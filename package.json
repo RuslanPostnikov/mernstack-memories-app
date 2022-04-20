@@ -11,7 +11,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
-    "eslint": "^6.6.0",
+    "eslint-config-google": "^0.14.0",
     "jwt-decode": "^3.1.2",
     "moment": "^2.27.0",
     "react": "^16.12.0",
@@ -46,10 +46,12 @@
     ]
   },
   "devDependencies": {
+    "eslint": "^8.13.0",
     "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.1.0"
   }
 }
