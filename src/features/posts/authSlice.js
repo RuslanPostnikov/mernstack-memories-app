@@ -2,25 +2,25 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as api from '../../api';
 
 export const signIn = createAsyncThunk(
-    'auth/signIn',
-    async ({ formData, navigate }) => {
-      const { data } = await api.signIn(formData);
+  'auth/signIn',
+  async ({ formData, navigate }) => {
+    const { data } = await api.signIn(formData);
 
-      navigate('/');
+    navigate('/');
 
-      return data;
-    },
+    return data;
+  },
 );
 
 export const signUp = createAsyncThunk(
-    'auth/signUp',
-    async ({ formData, navigate }) => {
-      const { data } = await api.signUp(formData);
+  'auth/signUp',
+  async ({ formData, navigate }) => {
+    const { data } = await api.signUp(formData);
 
-      navigate('/');
+    navigate('/');
 
-      return data;
-    },
+    return data;
+  },
 );
 
 export const authSlice = createSlice({
@@ -49,3 +49,8 @@ export const authSlice = createSlice({
 export const { logoutAction } = authSlice.actions;
 
 export default authSlice.reducer;
+
+export const selectUser = state => state.auth.authData;
+
+
+

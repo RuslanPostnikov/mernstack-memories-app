@@ -5,13 +5,13 @@ import useStyles from './styles';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
-import { logoutAction } from '../../features/posts/authSlice';
+import { logoutAction, selectUser } from '../../features/posts/authSlice';
 
 const Navbar = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector(state => state.auth.authData);
+  const user = useSelector(selectUser);
 
   const logout = () => {
     dispatch(logoutAction());
@@ -36,9 +36,9 @@ const Navbar = () => {
             >Log out</Button>
           </div>
         ) : (
-            <Button component={Link} to={'/auth'} variant={'contained'} color={'primary'}>
-              Sign in
-            </Button>
+          <Button component={Link} to={'/auth'} variant={'contained'} color={'primary'}>
+            Sign in
+          </Button>
         )}
       </Toolbar>
     </AppBar>
