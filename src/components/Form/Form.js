@@ -4,27 +4,28 @@ import { Button, Paper, TextField, Typography } from '@material-ui/core';
 import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from 'react-redux';
 import { addPost, updatePost } from '../../features/posts/postsSlice';
+import { selectUser } from '../../features/posts/authSlice';
 
 const postInitialState = {
   title: '',
   message: '',
   tags: '',
-  selectedFile: ''
+  selectedFile: '',
 };
 
 const Form = ({ currentId, setCurrentId }) => {
   const classes = useStyles();
   const [postData, setPostData] = useState(postInitialState);
-  const [addRequestStatus, setAddRequestStatus] = useState('idle')
+  const [addRequestStatus, setAddRequestStatus] = useState('idle');
   const dispatch = useDispatch();
   const post = useSelector(state => currentId ? state.posts.posts.find(p => p._id === currentId) : null);
-  const user = useSelector(state => state.auth.authData);
+  const user = useSelector(selectUser);
   const name = user?.result?.name;
 
   const canSave = Object.values(postData).every(Boolean) && addRequestStatus === 'idle';
 
   useEffect(() => {
-    if(post) {
+    if (post) {
       const data = {};
       Object.keys(postInitialState).map(key => data[key] = post[key]);
       setPostData(data);
@@ -38,7 +39,7 @@ const Form = ({ currentId, setCurrentId }) => {
       setAddRequestStatus('pending');
 
 
-      if(currentId) {
+      if (currentId) {
         await dispatch(updatePost({ id: currentId, post: { ...postData, name } }));
       } else {
         await dispatch(addPost({ ...postData, name })).unwrap();
@@ -47,19 +48,19 @@ const Form = ({ currentId, setCurrentId }) => {
     } catch (e) {
       console.log(e);
     } finally {
-      setAddRequestStatus('idle')
+      setAddRequestStatus('idle');
     }
-  }
+  };
 
   const clear = () => {
     setCurrentId(null);
     setPostData(postInitialState);
-  }
+  };
 
   const handleChange = e => {
     const { name, value } = e.target;
-    if(name === 'tags') {
-      let newValue = [...value.split(',')].map(item => item.trim())
+    if (name === 'tags') {
+      let newValue = [...value.split(',')].map(item => item.trim());
       setPostData({
         ...postData, [name]: newValue,
       });
@@ -68,20 +69,20 @@ const Form = ({ currentId, setCurrentId }) => {
         ...postData, [name]: value,
       });
     }
-  }
+  };
 
   const capitalizeFirstLetter = string => {
     return string.charAt(0).toUpperCase() + string.slice(1);
-  }
+  };
 
-  if(!name) {
+  if (!name) {
     return (
       <Paper className={classes.paper}>
         <Typography variant={'h6'} align={'center'}>
           Please Sign In to create your own memories and like other memoires
         </Typography>
       </Paper>
-    )
+    );
   }
 
   return (
@@ -107,7 +108,7 @@ const Form = ({ currentId, setCurrentId }) => {
                   value={postData[key]}
                   onChange={handleChange}
                 />
-              )
+              );
             })
         }
         <div className={classes.fileInput}>
